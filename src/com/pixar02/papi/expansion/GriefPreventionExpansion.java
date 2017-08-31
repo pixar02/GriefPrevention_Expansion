@@ -127,6 +127,11 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 			return String.valueOf(pd.lastClaim.getOwnerName());
 
 		}
+		// %griefprevention_XXX%
+		if (identifier.equals("XXX")) {
+			return "XXX";
+
+		}
 		return null;
 	}
 
