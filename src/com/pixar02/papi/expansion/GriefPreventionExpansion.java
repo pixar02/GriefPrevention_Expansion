@@ -88,7 +88,7 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 	 */
 	@Override
 	public String getVersion() {
-		return "1.1.0";
+		return "1.2.0";
 	}
 
 	/**
@@ -117,14 +117,14 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 			return String.valueOf(pd.getAccruedClaimBlocks());
 
 		}
+		// %griefprevention_accruedclaims_limit%
+		if (identifier.equals("accruedclaims_limit")) {
+			return String.valueOf(pd.getAccruedClaimBlocksLimit());
+
+		}
 		// %griefprevention_remainingclaims%
 		if (identifier.equals("remainingclaims")) {
 			return String.valueOf(pd.getRemainingClaimBlocks());
-
-		}
-		// %griefprevention_currentclaim_ownername%
-		if (identifier.equals("currentclaim_ownername")) {
-			return String.valueOf(pd.lastClaim.getOwnerName());
 
 		}
 		// %griefprevention_XXX%
