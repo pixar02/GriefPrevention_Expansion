@@ -103,8 +103,8 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 		if (p == null) {
 			return "";
 		}
-		PlayerData pd = plugin.dataStore.getPlayerData(p.getUniqueId());
 		DataStore DataS = plugin.dataStore;
+		PlayerData pd = DataS.getPlayerData(p.getUniqueId());
 
 		// %griefprevention_claims%
 		if (identifier.equals("claims")) {
@@ -133,7 +133,6 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 		// %griefprevention_currentclaim_ownername%
 		if (identifier.equals("currentclaim_ownername")) {
 			Claim claim = DataS.getClaimAt(p.getLocation(), true, null);
-
 			if (claim == null) {
 				return "Unclaimed";
 			} else {
