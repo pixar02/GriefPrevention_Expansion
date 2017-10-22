@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.ryanhamshire.GriefPrevention.Claim;
+import me.ryanhamshire.GriefPrevention.DataStore;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
 import me.ryanhamshire.GriefPrevention.PlayerData;
 
@@ -102,6 +104,7 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 			return "";
 		}
 		PlayerData pd = plugin.dataStore.getPlayerData(p.getUniqueId());
+		DataStore DataS = plugin.dataStore;
 
 		// %griefprevention_claims%
 		if (identifier.equals("claims")) {
@@ -125,6 +128,17 @@ public class GriefPreventionExpansion extends PlaceholderExpansion {
 		// %griefprevention_remainingclaims%
 		if (identifier.equals("remainingclaims")) {
 			return String.valueOf(pd.getRemainingClaimBlocks());
+
+		}
+		// %griefprevention_currentclaim_ownername%
+		if (identifier.equals("currentclaim_ownername")) {
+			Claim claim = DataS.getClaimAt(p.getLocation(), true, null);
+
+			if (claim == null) {
+				return "Unclaimed";
+			} else {
+				return String.valueOf(claim.getOwnerName());
+			}
 
 		}
 		// %griefprevention_XXX%
